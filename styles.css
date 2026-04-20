@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --brand: #1a5f7a;
+  --brand-dark: #0f3f4f;
+  --accent: #4a9ba8;
+  --accent-light: #7cbcc7;
+  --bg-soft: #f0f7fa;
+  --bg-wave: linear-gradient(135deg, rgba(26, 95, 122, 0.08) 0%, rgba(74, 155, 168, 0.06) 100%);
+
+  /* Override Bootstrap's primary color */
+  --bs-primary: #1a5f7a;
+  --bs-primary-rgb: 26, 95, 122;
+  --bs-primary-bg-subtle: #d6eaf1;
+  --bs-link-color: #1a5f7a;
+  --bs-link-hover-color: #0f3f4f;
+}
+
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.navbar-brand {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  color: var(--brand) !important;
+  letter-spacing: -0.5px;
+  transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: var(--accent) !important;
+}
+
+.nav-link {
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--accent) !important;
+}
+
+.btn-primary {
+  background-color: var(--brand);
+  border-color: var(--brand);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--brand-dark);
+  border-color: var(--brand-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1.5rem rgba(26, 95, 122, 0.3);
+}
+
+.btn-outline-primary {
+  color: var(--brand);
+  border-color: var(--brand);
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--brand);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1.5rem rgba(26, 95, 122, 0.3);
+}
+
+.avatar-shadow {
+  box-shadow: 0 0.75rem 2rem rgba(26, 95, 122, 0.15);
+  transition: all 0.3s ease;
+}
+
+.avatar-shadow:hover {
+  box-shadow: 0 1rem 3rem rgba(26, 95, 122, 0.2);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
