@@ -24,132 +24,19 @@
 
     <style>
       :root {
-        --brand: #1a5f7a;
-        --brand-dark: #0f3f4f;
-        --accent: #4a9ba8;
-        --accent-light: #7cbcc7;
-        --bg-soft: #f0f7fa;
-        --bg-wave: linear-gradient(135deg, rgba(26, 95, 122, 0.08) 0%, rgba(74, 155, 168, 0.06) 100%);
+        --brand: #0d6efd; 
+        --brand-dark: #0a58ca;
+        --bg-soft: #f8f9fa;
       }
-      
-      * {
-        font-family: 'Inter', sans-serif;
-      }
-      
-      h1, h2, h3, h4, h5, h6 {
-        font-family: 'Space Grotesk', sans-serif;
-        font-weight: 600;
-        letter-spacing: -0.5px;
-      }
-      
       .hero {
-        background: linear-gradient(135deg, rgba(26, 95, 122, 0.12) 0%, rgba(74, 155, 168, 0.08) 50%, rgba(176, 228, 239, 0.06) 100%);
-        position: relative;
-        overflow: hidden;
+        background: linear-gradient(180deg, rgba(13, 110, 253, 0.08), rgba(13,110,253,0.02));
       }
-      
-      .hero::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        right: -100px;
-        width: 400px;
-        height: 400px;
-        background: radial-gradient(circle, rgba(122, 204, 207, 0.1) 0%, transparent 70%);
-        border-radius: 50%;
-        pointer-events: none;
-      }
-      
-      @keyframes float {
-        0%, 100% {
-          transform: translateY(0px);
-        }
-        50% {
-          transform: translateY(-15px);
-        }
-      }
-      
       .avatar-shadow {
-        box-shadow: 0 0.75rem 2rem rgba(26, 95, 122, 0.15);
-        transition: all 0.3s ease;
+        box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.12);
       }
-      
-      .avatar-shadow:hover {
-        box-shadow: 0 1rem 3rem rgba(26, 95, 122, 0.2);
-      }
-      
-      .btn-primary {
-        background-color: var(--brand);
-        border-color: var(--brand);
-        transition: all 0.3s ease;
-      }
-      
-      .btn-primary:hover {
-        background-color: var(--brand-dark);
-        border-color: var(--brand-dark);
-        transform: translateY(-2px);
-        box-shadow: 0 0.5rem 1.5rem rgba(26, 95, 122, 0.3);
-      }
-      
-      .btn-outline-primary {
-        color: var(--brand);
-        border-color: var(--brand);
-        transition: all 0.3s ease;
-      }
-      
-      .btn-outline-primary:hover {
-        background-color: var(--brand);
-        color: white;
-        transform: translateY(-2px);
-        box-shadow: 0 0.5rem 1.5rem rgba(26, 95, 122, 0.3);
-      }
-      
-      .link-card {
-        transition: all 0.3s ease;
-        border: 1px solid rgba(26, 95, 122, 0.1);
-      }
-      
       .link-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 1rem 2rem rgba(26, 95, 122, 0.15);
-        border-color: var(--accent);
-        background: linear-gradient(135deg, rgba(74, 155, 168, 0.03) 0%, rgba(176, 228, 239, 0.03) 100%);
-      }
-      
-      .link-card i {
-        transition: color 0.3s ease;
-      }
-      
-      .link-card:hover i {
-        color: var(--accent) !important;
-      }
-      
-      section {
-        transition: background-color 0.3s ease;
-      }
-      
-      #links {
-        background-color: var(--bg-soft);
-      }
-      
-      .navbar-brand {
-        font-family: 'Space Grotesk', sans-serif;
-        font-weight: 700;
-        color: var(--brand) !important;
-        letter-spacing: -0.5px;
-        transition: color 0.3s ease;
-      }
-      
-      .navbar-brand:hover {
-        color: var(--accent) !important;
-      }
-      
-      .nav-link {
-        transition: color 0.3s ease;
-      }
-      
-      .nav-link:hover {
-        color: var(--accent) !important;
+        transform: translateY(-2px);
+        box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.1);
       }
     </style>
   </head>
@@ -185,7 +72,7 @@
             />
           </div>
           <div class="col-12 col-md-8 text-center text-md-start">
-            <h1 class="display-5 fw-bold mb-2">Hi, I'm Brandon 👋</h1>
+            <h1 class="display-5 fw-bold mb-2">Hi, I’m Brandon 👋</h1>
             <p class="lead mb-3" id="about">
               Third‑year Computer Science student at the University of Notre Dame with interests in software development and technology strategy.
             </p>
@@ -215,7 +102,7 @@
             <div class="p-4 p-md-5 bg-white border rounded-4">
               <h2 class="h4 mb-3">Welcome</h2>
               <p class="mb-0">
-                I'm a motivated, high‑achieving student excited to start a professional career in software development or a technology strategy role. Explore my work and feel free to connect.
+                I’m a motivated, high‑achieving student excited to start a professional career in software development or a technology strategy role. Explore my work and feel free to connect.
               </p>
             </div>
           </div>
@@ -223,7 +110,7 @@
       </div>
     </section>
 
-    <section id="links" class="py-4 py-md-5">
+    <section id="links" class="py-4 py-md-5 bg-light-subtle">
       <div class="container">
         <h2 class="h4 fw-semibold mb-4 text-center">Featured Links</h2>
         <div class="row g-4">
@@ -232,10 +119,10 @@
               <div class="card h-100 border-0 shadow-sm link-card">
                 <div class="card-body">
                   <div class="d-flex align-items-center mb-2">
-                    <i class="bi bi-linkedin fs-3 me-2" style="color: var(--brand);"></i>
+                    <i class="bi bi-linkedin fs-3 me-2 text-primary"></i>
                     <h3 class="h6 mb-0">LinkedIn</h3>
                   </div>
-                  <p class="text-body-secondary mb-0">Let's connect professionally and chat about projects or opportunities.</p>
+                  <p class="text-body-secondary mb-0">Let’s connect professionally and chat about projects or opportunities.</p>
                 </div>
               </div>
             </a>
@@ -246,7 +133,7 @@
               <div class="card h-100 border-0 shadow-sm link-card">
                 <div class="card-body">
                   <div class="d-flex align-items-center mb-2">
-                    <i class="bi bi-github fs-3 me-2" style="color: var(--brand);"></i>
+                    <i class="bi bi-github fs-3 me-2"></i>
                     <h3 class="h6 mb-0">GitHub</h3>
                   </div>
                   <p class="text-body-secondary mb-0">Browse my repositories and recent coding projects.</p>
@@ -260,7 +147,7 @@
               <div class="card h-100 border-0 shadow-sm link-card">
                 <div class="card-body">
                   <div class="d-flex align-items-center mb-2">
-                    <i class="bi bi-file-earmark-text fs-3 me-2" style="color: var(--brand);"></i>
+                    <i class="bi bi-file-earmark-text fs-3 me-2"></i>
                     <h3 class="h6 mb-0">Resume</h3>
                   </div>
                   <p class="text-body-secondary mb-0">View a concise overview of my experience and skills.</p>
@@ -274,7 +161,7 @@
               <div class="card h-100 border-0 shadow-sm link-card">
                 <div class="card-body">
                   <div class="d-flex align-items-center mb-2">
-                    <i class="bi bi-person-lines-fill fs-3 me-2" style="color: var(--brand);"></i>
+                    <i class="bi bi-person-lines-fill fs-3 me-2"></i>
                     <h3 class="h6 mb-0">More About Me</h3>
                   </div>
                   <p class="text-body-secondary mb-0">Learn about my interests, activities, and background.</p>
@@ -295,7 +182,7 @@
               <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
                 <div>
                   <h2 class="h4 mb-1">Want to get in touch?</h2>
-                  <p class="mb-0 text-body-secondary">I'm open to opportunities, collaborations, and conversations.</p>
+                  <p class="mb-0 text-body-secondary">I’m open to opportunities, collaborations, and conversations.</p>
                 </div>
                 <div class="d-flex gap-2">
                   <a class="btn btn-primary" href="mailto:bhulse72@gmail.com">
