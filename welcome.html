@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Brandon Hulse</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="welcome.css" />
+  </head>
+
+  <body>
+
+    <!-- =============================================
+         SECTION 1: Welcome Hero
+         Full-screen, fixed background, greeting text.
+         Will be animated away in Step 3.
+         ============================================= -->
+    <!-- Scroll progress bar — width updated by JS -->
+    <div id="scroll-progress"></div>
+
+    <section id="welcome">
+      <div class="text-center text-white">
+        <p class="welcome-label">Welcome</p>
+        <h1 class="welcome-name">My name is<br>Brandon Hulse</h1>
+        <p class="welcome-tagline">
+          CS Student <span>·</span> Notre Dame <span>·</span>
+        </p>
+        <div class="welcome-socials">
+          <a href="https://www.linkedin.com/in/brandon-hulse/" target="_blank" rel="noopener">
+            <i class="bi bi-linkedin"></i> LinkedIn
+          </a>
+          <a href="https://github.com/bhulse72" target="_blank" rel="noopener">
+            <i class="bi bi-github"></i> GitHub
+          </a>
+        </div>
+        <p class="scroll-hint">
+          <i class="bi bi-chevron-down"></i> Scroll to explore
+        </p>
+      </div>
+    </section>
+
+    <!-- =============================================
+         SECTION 2: Nav Hub
+         Revealed when the hero scrolls away.
+         Links to each part of the site.
+         ============================================= -->
+    <section id="nav-hub">
+      <div class="container text-center">
+        <h2 class="hub-title">Where would you like to go?</h2>
+        <div class="hub-grid">
+
+          <a href="index.html" class="hub-card">
+            <i class="bi bi-house-door hub-icon"></i>
+            <span class="hub-label">Home</span>
+            <span class="hub-desc">About me &amp; links</span>
+          </a>
+
+          <a href="resume-page/index.html" class="hub-card">
+            <i class="bi bi-file-earmark-text hub-icon"></i>
+            <span class="hub-label">Resume</span>
+            <span class="hub-desc">Experience &amp; skills</span>
+          </a>
+
+          <a href="more-about-me/index.html" class="hub-card">
+            <i class="bi bi-person-lines-fill hub-icon"></i>
+            <span class="hub-label">More About Me</span>
+            <span class="hub-desc">Interests &amp; background</span>
+          </a>
+
+          <a href="#" class="hub-card hub-card--soon">
+            <i class="bi bi-folder2-open hub-icon"></i>
+            <span class="hub-label">Projects</span>
+            <span class="hub-desc">Coming soon</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      /* =============================================
+         STEP 3: Scroll Animation
+
+         How it works:
+         - The hero is position:fixed, so it doesn't
+           move on its own when you scroll.
+         - We listen to the scroll event and read
+           window.scrollY (how far down the page is).
+         - We calculate "progress": 0 = top of page,
+           1 = scrolled one full viewport height (100vh).
+         - We then apply two effects as progress grows:
+             1. translateY: slides the hero upward
+             2. opacity: fades it out
+         - Once progress >= 1, the hero is gone and the
+           nav hub is fully visible.
+         ============================================= */
+
+      const hero     = document.getElementById('welcome');
+      const progress = document.getElementById('scroll-progress');
+
+      function onScroll() {
+        const scrollY = window.scrollY;
+        const viewH   = window.innerHeight;
+        const pct     = Math.min(scrollY / viewH, 1);
+
+        // Slide the hero upward as you scroll
+        hero.style.transform = `translateY(-${scrollY}px)`;
+
+        // Fade it out between 30%–85% scroll progress
+        const opacity = 1 - Math.max(0, (pct - 0.3) / 0.55);
+        hero.style.opacity = opacity;
+
+        // Progress bar: fill left-to-right, then hide once hero is gone
+        progress.style.width   = `${pct * 100}%`;
+        progress.style.opacity = pct >= 1 ? '0' : '1';
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+    </script>
+  </body>
+</html>
