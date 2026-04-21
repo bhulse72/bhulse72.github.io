@@ -8,12 +8,131 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="../styles.css" />
     <style>
+      /* Hero */
       header.page-hero {
-        background: linear-gradient(135deg, rgba(26, 95, 122, 0.12) 0%, rgba(74, 155, 168, 0.08) 50%, rgba(176, 228, 239, 0.06) 100%);
+        background: linear-gradient(135deg, var(--brand) 0%, #2a7f9a 60%, var(--accent) 100%);
+        color: #fff;
+        padding: 4rem 0 3rem;
       }
-      #experience, #leadership {
-        background-color: var(--bg-soft);
+      header.page-hero h1 { color: #fff; font-size: 2.6rem; letter-spacing: -1px; }
+      header.page-hero p, header.page-hero a { color: rgba(255,255,255,0.85); }
+      header.page-hero a:hover { color: #fff; }
+
+      /* Section alternation */
+      #education, #experience, #leadership { background: #fff; }
+      #projects, #skills { background-color: var(--bg-soft); }
+
+      /* Section headings */
+      .section-heading {
+        font-size: 1.1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--brand);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1.25rem;
       }
+      .section-heading::after {
+        content: '';
+        flex: 1;
+        height: 2px;
+        background: linear-gradient(to right, var(--accent-light), transparent);
+        border-radius: 1px;
+      }
+
+      /* Cards */
+      .resume-card {
+        border-left: 4px solid var(--accent) !important;
+        border-top: 0 !important;
+        border-right: 0 !important;
+        border-bottom: 0 !important;
+        border-radius: 0.5rem;
+        background: #fff;
+        box-shadow: 0 1px 6px rgba(26,95,122,0.07), 0 4px 16px rgba(26,95,122,0.06);
+        padding: 1.25rem 1.5rem;
+        transition: box-shadow 0.2s ease, transform 0.2s ease;
+      }
+      .resume-card:hover {
+        box-shadow: 0 4px 16px rgba(26,95,122,0.13), 0 8px 32px rgba(26,95,122,0.09);
+        transform: translateY(-2px);
+      }
+      #projects .resume-card { border-left-color: var(--brand) !important; }
+
+      .resume-card .card-title { font-size: 1rem; font-weight: 600; color: #1a1a2e; margin-bottom: 0.2rem; }
+      .resume-card .meta { font-size: 0.82rem; color: var(--brand); font-weight: 500; margin-bottom: 0.6rem; }
+      .resume-card ul { padding-left: 1.1rem; margin-bottom: 0; font-size: 0.9rem; color: #444; }
+      .resume-card ul li { margin-bottom: 0.35rem; line-height: 1.5; text-align: justify; }
+      .resume-card ul li:last-child { margin-bottom: 0; }
+
+      /* Skills */
+      .skill-group { margin-bottom: 1rem; }
+      .skill-group:last-child { margin-bottom: 0; }
+      .skill-label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        color: var(--brand);
+        margin-bottom: 0.4rem;
+      }
+      .skill-badge {
+        display: inline-block;
+        padding: 0.3rem 0.75rem;
+        border-radius: 99px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        margin: 0.2rem 0.2rem 0.2rem 0;
+      }
+      .skill-lang  { background: #dbeafe; color: #1e40af; }
+      .skill-frame { background: #d1fae5; color: #065f46; }
+      .skill-tool  { background: #ede9fe; color: #5b21b6; }
+
+      /* Gutter & fixed width for consistent line breaks */
+      .container { --bs-gutter-x: 2.5rem; max-width: 960px !important; }
+
+      /* Download dropdown */
+      .btn-download-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        margin-top: 1.25rem;
+        padding: 0.5rem 1.25rem;
+        border-radius: 99px;
+        background: rgba(255,255,255,0.15);
+        color: #fff !important;
+        border: 1.5px solid rgba(255,255,255,0.5);
+        font-size: 0.875rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: background 0.2s ease, border-color 0.2s ease;
+        cursor: pointer;
+      }
+      .btn-download-toggle:hover, .btn-download-toggle:focus {
+        background: rgba(255,255,255,0.25);
+        border-color: #fff;
+        color: #fff !important;
+        box-shadow: none;
+        outline: none;
+      }
+      .btn-download-toggle::after { display: none; }
+      .download-menu {
+        border-radius: 0.5rem;
+        border: 1px solid rgba(26,95,122,0.15);
+        box-shadow: 0 4px 16px rgba(26,95,122,0.12);
+        min-width: 200px;
+        padding: 0.25rem 0;
+      }
+      .download-menu .dropdown-item {
+        font-size: 0.875rem;
+        padding: 0.5rem 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #1a1a2e;
+      }
+      .download-menu .dropdown-item:hover { background: var(--bg-soft); }
     </style>
   </head>
   <body class="bg-white">
@@ -34,53 +153,77 @@
     </nav>
 
     <!-- Header -->
-    <header class="py-5 text-center page-hero">
+    <header class="text-center page-hero">
       <div class="container">
         <h1 class="fw-bold mb-2">Brandon Hulse</h1>
-        <p class="mb-1">732-939-1817 | <a href="mailto:bhulse@nd.edu">bhulse@nd.edu</a></p>
-        <p class="mb-3"><a href="https://www.linkedin.com/in/brandon-hulse" target="_blank">linkedin.com/in/brandon-hulse</a></p>
+        <p class="mb-2 fs-5">Computer Science · University of Notre Dame</p>
+        <div class="d-flex flex-wrap justify-content-center gap-3" style="font-size:0.9rem;">
+          <span><i class="bi bi-telephone me-1"></i>732-939-1817</span>
+          <a href="mailto:bhulse@nd.edu"><i class="bi bi-envelope me-1"></i>bhulse@nd.edu</a>
+          <a href="https://www.linkedin.com/in/brandon-hulse" target="_blank"><i class="bi bi-linkedin me-1"></i>linkedin.com/in/brandon-hulse</a>
+        </div>
+        <div class="dropdown">
+          <button class="btn-download-toggle dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-download"></i> Download Resume
+          </button>
+          <ul class="dropdown-menu download-menu">
+            <li>
+              <a class="dropdown-item" href="brandon-hulse-resume.pdf" download>
+                <i class="bi bi-briefcase text-primary"></i> Consulting / TPM
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="brandon-hulse-resume-technical.pdf" download>
+                <i class="bi bi-code-slash text-primary"></i> Technical / SWE
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </header>
 
     <!-- Education -->
     <section id="education" class="py-5">
       <div class="container">
-        <h2 class="h4 fw-semibold mb-3">Education</h2>
-        <div class="card border-0 shadow-sm p-4">
-          <h3 class="h5">University of Notre Dame</h3>
-          <p class="mb-1"><em>Bachelor of Science, Computer Science</em> | Minor: Engineering Corporate Practice</p>
-          <p class="mb-0 text-body-secondary">GPA: 3.8 | Expected Graduation: May 2026 | Notre Dame, IN</p>
+        <div class="section-heading">Education</div>
+        <div class="resume-card">
+          <p class="card-title">University of Notre Dame</p>
+          <p class="meta">Notre Dame, IN &nbsp;·&nbsp; Expected Graduation: May 2026 &nbsp;·&nbsp; GPA: 3.8</p>
+          <p class="mb-0" style="font-size:0.9rem;"><em>Bachelor of Science, Computer Science</em> &nbsp;|&nbsp; Minor: Engineering Corporate Practice</p>
         </div>
       </div>
     </section>
 
     <!-- Experience -->
-    <section id="experience" class="py-5 bg-light-subtle">
+    <section id="experience" class="py-5">
       <div class="container">
-        <h2 class="h4 fw-semibold mb-3">Work Experience</h2>
-        <div class="row g-3">
-          <div class="col-12">
-            <div class="card border-0 shadow-sm p-4">
-              <h3 class="h5">Cloud and Digital Intern — PwC</h3>
-              <p class="text-body-secondary mb-2">New York, NY | June 2025 – August 2025</p>
-              <ul>
-                <li>Coordinated daily development syncs across 30+ onshore & offshore developers to align sprint priorities and resolve blockers for a large-scale enterprise system upgrade.</li>
-                <li>Developed a data pipeline leveraging Jira’s REST API and Python to feed sprint and defect metrics into Power BI dashboards, eliminating ~5 hours of manual reporting weekly.</li>
-                <li>Prepared executive reports for Steering Committee meetings, synthesizing project metrics and blockers to support governance and timely decision-making.</li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-12">
-            <div class="card border-0 shadow-sm p-4">
-              <h3 class="h5">Technology Strategy Intern — Verizon</h3>
-              <p class="text-body-secondary mb-2">Basking Ridge, NJ | June 2024 – August 2024</p>
-              <ul>
-                <li>Supported a company-wide initiative to consolidate 28 legacy BI tools to 3 core platforms, reducing spend and aligning reporting to “north star” principles.</li>
-                <li>Built a migration framework using Python, Bash, SQL, and a Gemini-based LLM to automate data extraction and report categorization.</li>
-                <li>Delivered three migration recommendations resulting in $800k projected annual savings.</li>
-              </ul>
-            </div>
-          </div>
+        <div class="section-heading">Work Experience</div>
+        <div class="resume-card mb-3">
+          <p class="card-title">Cloud and Digital Intern — PwC</p>
+          <p class="meta">New York, NY &nbsp;·&nbsp; June 2025 – August 2025</p>
+          <ul>
+            <li>Coordinated daily development syncs across 30+ onshore &amp; offshore developers to align sprint priorities, resolve blockers, and track progress for a large-scale enterprise system upgrade for a major utilities client.</li>
+            <li>Developed a data pipeline leveraging Jira's REST API and Python to feed sprint and defect metrics into Power BI dashboards, providing on-demand visibility while eliminating ~5 hours of manual reporting weekly.</li>
+            <li>Prepared executive reporting materials for Steering Committee meetings, synthesizing project metrics, blockers, and delivery patterns into clear visual updates that supported governance and timely decision-making.</li>
+          </ul>
+        </div>
+        <div class="resume-card mb-3">
+          <p class="card-title">Technology Strategy Intern — Verizon</p>
+          <p class="meta">Basking Ridge, NJ &nbsp;·&nbsp; June 2024 – August 2024</p>
+          <ul>
+            <li>Supported an enterprise-wide initiative to consolidate 28 legacy BI tools to 3 core platforms, reducing spend, lowering compute overhead, and aligning reporting strategy with "north star" principles.</li>
+            <li>Designed an end-to-end migration recommendation framework combining Python and Bash scripts for data preprocessing, SQL queries for targeted data extraction, and a Gemini-based LLM for automated report categorization.</li>
+            <li>Delivered three migration recommendations driving over $800k in projected annual savings.</li>
+          </ul>
+        </div>
+        <div class="resume-card">
+          <p class="card-title">Dockhand — Bridge Marina</p>
+          <p class="meta">Highlands, NJ &nbsp;·&nbsp; May 2021 – August 2023</p>
+          <ul>
+            <li>Built strong customer service skills by teaching 100+ customers essential boat handling techniques, providing personalized on-water boating advice, and proactively selling marina club memberships and day-use rental packages.</li>
+            <li>Trained five new employees in dock safety protocols and boat maneuvering by thoroughly rewriting the company training handbook and leading structured hands-on demonstrations on the water.</li>
+            <li>Improved dock efficiency by identifying bottlenecks in daily procedures and overseeing installation of new storage and cleaning equipment.</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -88,61 +231,96 @@
     <!-- Projects -->
     <section id="projects" class="py-5">
       <div class="container">
-        <h2 class="h4 fw-semibold mb-3">Projects & Coursework</h2>
-        <div class="row g-3">
-          <div class="col-12">
-            <div class="card border-0 shadow-sm p-4">
-              <h3 class="h5">LineupLab — University of Notre Dame</h3>
-              <p class="text-body-secondary mb-2">January 2025 – Present</p>
-              <ul>
-                <li>Designed and deployed a web platform enabling swim coaches to manage rosters and plan dual meets.</li>
-                <li>Built an optimal lineup generator using heuristic-driven algorithms to simulate opposing lineups and maximize competitiveness.</li>
-                <li>Implemented a responsive front end with React hooks, centralized state management, and modern design principles.</li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-12">
-            <div class="card border-0 shadow-sm p-4">
-              <h3 class="h5">CampusMart — University of Notre Dame</h3>
-              <p class="text-body-secondary mb-2">January 2025 – May 2025</p>
-              <ul>
-                <li>Developed a Django web app with user authentication, role-based access, and marketplace listings with multi-photo uploads.</li>
-                <li>Optimized SQL queries and indexed key fields for scalable backend performance.</li>
-                <li>Leveraged Django ORM, SQLite, and modular templates for maintainable and fast iteration.</li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-12">
-            <div class="card border-0 shadow-sm p-4">
-              <h3 class="h5">Operating Systems Principles — University of Notre Dame</h3>
-              <p class="text-body-secondary mb-2">August 2024 – December 2024</p>
-              <ul>
-                <li>Developed a multi-core shell implementing FIFO, Round Robin, and MLFQ scheduling policies.</li>
-                <li>Built a multithreaded C client library and distributed pub/sub chat application using POSIX threads and RESTful APIs.</li>
-                <li>Implemented a heap management library and Unix-style file system for virtualized storage.</li>
-              </ul>
-            </div>
-          </div>
+        <div class="section-heading">Projects &amp; Coursework</div>
+        <div class="resume-card mb-3">
+          <p class="card-title">Suite Child Inventory Management System — University of Notre Dame</p>
+          <p class="meta">August 2025 – December 2025</p>
+          <ul>
+            <li>Built a full-stack Flask application to manage inventory orders for a live retail business, enabling authenticated users to create, edit, search, and track orders through a centralized dashboard.</li>
+            <li>Designed a relational database schema from raw Excel data (6,600+ rows, 37 columns), consolidating inconsistent monthly sheets into normalized tables using SQLAlchemy ORM with end-to-end CRUD workflows.</li>
+            <li>Implemented role-based access control across five distinct user groups and built a real-time metrics dashboard surfacing operational KPIs, with all figures validated against authoritative ground-truth SQL queries.</li>
+            <li>Automated monthly database updates using a cron-scheduled Python job; generated audit logs for traceability and built dry-run test support to safely validate order migrations before each production deployment.</li>
+          </ul>
+        </div>
+        <div class="resume-card mb-3">
+          <p class="card-title">LineupLab — University of Notre Dame</p>
+          <p class="meta">January 2025 – August 2025</p>
+          <ul>
+            <li>Designed and deployed a full-featured web platform enabling swim coaches to manage team rosters, track individual swimmer performance over time, and strategically build optimized lineups for competitive dual meets.</li>
+            <li>Developed an optimal lineup generator powered by a heuristic-driven adversarial algorithm that simulates opposing strategies, enforces dual-meet constraints, and produces competitive lineups in real time.</li>
+            <li>Engineered a fully responsive front end in React using custom hooks, a component-based architecture, and centralized state management, with polished CSS delivering a seamless cross-device user experience.</li>
+          </ul>
+        </div>
+        <div class="resume-card mb-3">
+          <p class="card-title">CampusMart — University of Notre Dame</p>
+          <p class="meta">January 2025 – May 2025</p>
+          <ul>
+            <li>Built a Django web application enabling campus users to register, authenticate, and manage marketplace listings with multi-photo uploads, leveraging Django ORM, SQLite, and a clean modular view-template architecture.</li>
+            <li>Implemented secure authentication, persistent session handling, and role-based access control by integrating Django's built-in auth framework with custom middleware for robust account-level permissions.</li>
+            <li>Designed and optimized relational schemas for listings, users, and messages; boosted query performance through strategic field indexing, efficient ORM patterns, and profiling to eliminate bottlenecks.</li>
+          </ul>
+        </div>
+        <div class="resume-card mb-3">
+          <p class="card-title">Health Equity Data Challenge — Lucy Family Institute for Data &amp; Society</p>
+          <p class="meta">September 2024 – November 2024</p>
+          <ul>
+            <li>Evaluated the effectiveness of Tennessee's opioid prescription policy by integrating healthcare and socioeconomic datasets, generating targeted, data-driven recommendations to improve health outcomes in high-need communities.</li>
+            <li>Conducted policy impact assessment using interrupted time series analysis and regional segmentation, uncovering disparities in opioid distribution trends across urban and rural counties in Eastern Tennessee.</li>
+            <li>Recognized as Runner-up for delivering clear, actionable, evidence-based policy recommendations through compelling data visualizations presented to a panel of faculty judges and public health industry leaders.</li>
+          </ul>
+        </div>
+        <div class="resume-card">
+          <p class="card-title">Engineering Computing Data Analytics — University of Notre Dame</p>
+          <p class="meta">January 2023 – May 2023</p>
+          <ul>
+            <li>Created an application that analyzed statistical trends across 1.2M+ data points from every recorded NHL game.</li>
+            <li>Generated insights on coaching changes, equipment evolution, and rule modifications across league-wide scoring trends and team-specific performance metrics, presented through rich interactive visualizations.</li>
+            <li>Utilized MATLAB AppDesigner to build a GUI for efficient navigation and seamless user input.</li>
+          </ul>
         </div>
       </div>
     </section>
 
     <!-- Leadership -->
-    <section id="leadership" class="py-5 bg-light-subtle">
+    <section id="leadership" class="py-5">
       <div class="container">
-        <h2 class="h4 fw-semibold mb-3">Leadership & Activities</h2>
-        <div class="card border-0 shadow-sm p-4">
-          <ul class="mb-0">
-            <li><strong>Men’s Water Polo Conditioning Coach</strong> — Notre Dame, IN | August 2022 – Present
-              <ul>
-                <li>Developed and led high-intensity interval swim training sessions to prepare athletes for competition.</li>
-              </ul>
-            </li>
-            <li class="mt-2"><strong>Club Swim Team</strong> — Notre Dame, IN | August 2022 – Present
-              <ul>
-                <li>Selected annually for the national competition team through consistent performance and leadership.</li>
-              </ul>
-            </li>
+        <div class="section-heading">Leadership &amp; Activities</div>
+        <div class="resume-card mb-3">
+          <p class="card-title">Men's Water Polo — Conditioning Coach</p>
+          <p class="meta">Notre Dame, IN &nbsp;·&nbsp; August 2022 – Present</p>
+          <ul>
+            <li>Developed and led high-intensity interval swim training sessions to prepare athletes for tournament season.</li>
+          </ul>
+        </div>
+        <div class="resume-card mb-3">
+          <p class="card-title">Club Swim Team</p>
+          <p class="meta">Notre Dame, IN &nbsp;·&nbsp; August 2022 – Present</p>
+          <ul>
+            <li>Achieved annual national team selection through consistent performance and meeting competitive time standards.</li>
+          </ul>
+        </div>
+        <div class="resume-card mb-3">
+          <p class="card-title">Bagpipes Player — CBA Pipes &amp; Drums</p>
+          <p class="meta">Middletown, NJ &nbsp;·&nbsp; September 2020 – Present</p>
+          <ul>
+            <li>Marched in the 2022 St. Patrick's Day parade in NYC with the CBA Pipes &amp; Drums band.</li>
+            <li>Participated in multiple annual parades across New Jersey including the Freehold Memorial Day parade (awarded best band), the Belmar St. Patrick's Day parade, and the Rumson St. Patrick's Day parade.</li>
+          </ul>
+        </div>
+        <div class="resume-card mb-3">
+          <p class="card-title">Captain, Varsity Swimming — CBA</p>
+          <p class="meta">Lincroft, NJ &nbsp;·&nbsp; September 2021 – May 2022</p>
+          <ul>
+            <li>Led a team of 53 to multiple regional titles and the state championship meet.</li>
+            <li>Created optimized meet lineups playing to opponent strengths/weaknesses and coached younger swimmers.</li>
+          </ul>
+        </div>
+        <div class="resume-card">
+          <p class="card-title">Project Grove Charity Vegetable Garden — President</p>
+          <p class="meta">Lincroft, NJ &nbsp;·&nbsp; May 2021 – May 2022</p>
+          <ul>
+            <li>Planned and executed a garden expansion that increased annual produce output by over 30% while navigating administrative space and resource constraints through iterative design and phased construction.</li>
+            <li>Coordinated year-round maintenance with 20 active members, managed seasonal planting and harvesting schedules, and donated all harvest proceeds to local food shelters serving the surrounding community.</li>
           </ul>
         </div>
       </div>
@@ -151,23 +329,33 @@
     <!-- Skills -->
     <section id="skills" class="py-5">
       <div class="container">
-        <h2 class="h4 fw-semibold mb-3">Technical Skills</h2>
-        <div class="card border-0 shadow-sm p-4">
-          <div class="d-flex flex-wrap gap-2">
-            <span class="badge text-bg-primary">Python</span>
-            <span class="badge text-bg-primary">C/C++</span>
-            <span class="badge text-bg-primary">Java</span>
-            <span class="badge text-bg-primary">JavaScript</span>
-            <span class="badge text-bg-primary">React</span>
-            <span class="badge text-bg-primary">Django</span>
-            <span class="badge text-bg-primary">HTML/CSS</span>
-            <span class="badge text-bg-primary">SQL</span>
-            <span class="badge text-bg-primary">REST API</span>
-            <span class="badge text-bg-primary">Bash</span>
-            <span class="badge text-bg-primary">Power BI</span>
-            <span class="badge text-bg-primary">Excel</span>
-            <span class="badge text-bg-primary">Git</span>
-            <span class="badge text-bg-primary">Jira</span>
+        <div class="section-heading">Technical Skills</div>
+        <div class="resume-card">
+          <div class="skill-group">
+            <div class="skill-label">Languages</div>
+            <span class="skill-badge skill-lang">Python</span>
+            <span class="skill-badge skill-lang">C/C++</span>
+            <span class="skill-badge skill-lang">Java</span>
+            <span class="skill-badge skill-lang">JavaScript</span>
+            <span class="skill-badge skill-lang">SQL</span>
+            <span class="skill-badge skill-lang">Bash</span>
+          </div>
+          <div class="skill-group">
+            <div class="skill-label">Frameworks &amp; Libraries</div>
+            <span class="skill-badge skill-frame">React</span>
+            <span class="skill-badge skill-frame">Django</span>
+            <span class="skill-badge skill-frame">Flask</span>
+            <span class="skill-badge skill-frame">HTML/CSS</span>
+            <span class="skill-badge skill-frame">REST API</span>
+            <span class="skill-badge skill-frame">SQLAlchemy</span>
+          </div>
+          <div class="skill-group">
+            <div class="skill-label">Tools &amp; Platforms</div>
+            <span class="skill-badge skill-tool">Git</span>
+            <span class="skill-badge skill-tool">Jira</span>
+            <span class="skill-badge skill-tool">Power BI</span>
+            <span class="skill-badge skill-tool">Excel</span>
+            <span class="skill-badge skill-tool">MATLAB</span>
           </div>
         </div>
       </div>
