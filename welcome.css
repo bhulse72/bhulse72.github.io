@@ -1,0 +1,251 @@
+/* ==============================================
+   Structure
+   ============================================== */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+#welcome {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('images/A17D2020-4D47-46CF-864E-BE15C0733F1A.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Semi-transparent dark overlay so white text reads clearly */
+#welcome::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+/* Text sits above the overlay */
+#welcome > div {
+  position: relative;
+  z-index: 1;
+}
+
+#nav-hub {
+  position: relative;
+  z-index: 2;
+  margin-top: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, #f0f7fa 0%, #ffffff 60%);
+}
+
+/* ==============================================
+   Scroll progress bar
+   Width is driven by JS (0% → 100%) as you
+   scroll through the hero, then fades out.
+   ============================================== */
+
+#scroll-progress {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent-light), var(--brand));
+  z-index: 10;
+  transition: opacity 0.3s ease;
+}
+
+/* ==============================================
+   Hero text
+   ============================================== */
+
+.welcome-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  opacity: 0.85;
+}
+
+.welcome-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.8rem, 8vw, 6rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 2.5rem;
+}
+
+.welcome-tagline {
+  font-size: clamp(0.85rem, 2vw, 1.05rem);
+  letter-spacing: 0.08em;
+  opacity: 0.8;
+  margin-bottom: 1.75rem;
+}
+
+.welcome-tagline span {
+  opacity: 0.45;
+  margin: 0 0.5em;
+}
+
+/* ==============================================
+   Social links
+   ============================================== */
+
+.welcome-socials {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+
+.welcome-socials a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.welcome-socials a:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* ==============================================
+   Scroll hint
+   ============================================== */
+
+.scroll-hint {
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+/* ==============================================
+   Entrance animations
+   Each element fades in and rises from below,
+   staggered so they cascade in one at a time.
+   ============================================== */
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes nudge {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+
+.welcome-label {
+  animation: fadeUp 0.7s ease both 0.1s;
+}
+
+.welcome-name {
+  animation: fadeUp 0.7s ease both 0.3s;
+}
+
+.welcome-tagline {
+  animation: fadeUp 0.7s ease both 0.5s;
+}
+
+.welcome-socials {
+  animation: fadeUp 0.7s ease both 0.65s;
+}
+
+.scroll-hint {
+  animation: fadeUp 0.7s ease both 0.8s, nudge 2s ease-in-out 1s infinite;
+}
+
+/* ==============================================
+   Nav hub cards
+   ============================================== */
+
+.hub-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 600;
+  color: var(--brand);
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.5px;
+}
+
+.hub-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+@media (max-width: 480px) {
+  .hub-grid { grid-template-columns: 1fr; }
+}
+
+.hub-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 2rem 1.5rem;
+  background: #fff;
+  border: 1px solid rgba(26, 95, 122, 0.12);
+  border-radius: 1rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.hub-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 1rem 2rem rgba(26, 95, 122, 0.14);
+  border-color: var(--accent);
+  color: inherit;
+}
+
+.hub-icon {
+  font-size: 2.2rem;
+  color: var(--brand);
+  transition: color 0.25s ease;
+}
+
+.hub-card:hover .hub-icon {
+  color: var(--accent);
+}
+
+.hub-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.hub-desc {
+  font-size: 0.82rem;
+  color: #6c757d;
+}
+
+.hub-card--soon {
+  opacity: 0.55;
+  cursor: default;
+  pointer-events: none;
+}
